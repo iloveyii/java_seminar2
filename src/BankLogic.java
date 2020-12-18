@@ -53,18 +53,35 @@ public class BankLogic {
 		c.showAccounts();
 	}
 	protected static void withdraw(Customer c) {
+		double amount;
+		String accNumber;
+		Account acc;
+		
 		System.out.print("Enter account number : ");
+		
 		if(userInput.hasNextLine()) {
-			String accNumber = userInput.next();
-			Account acc = c.searchAccNumber(accNumber);
+			accNumber = userInput.next();
+			acc = c.searchAccNumber(accNumber);
+			
 			if(acc == null) {
 				System.out.println("Account number not found");
 			} else {
 				System.out.print("Enter amount to withdraw : ");
-				double amount = userInput.nextDouble();
+				amount = getUserAmount();
 				acc.withdraw(amount);
 			}
 		}
+	}
+	
+	private static double getUserAmount() {
+		double amount = 0;
+		try {
+			amount = userInput.nextDouble();
+		} catch (InputMismatchException e) {
+			userInput.nextLine();
+			System.out.println("Invalid amount.");
+		} 
+		return amount;
 	}
 	
 	protected static void deposit(Customer c) {
@@ -76,7 +93,7 @@ public class BankLogic {
 			System.out.println("Account number not found");
 		} else {
 			System.out.print("Enter amount to deposit : ");
-			double amount = userInput.nextDouble();
+			double amount = getUserAmount();
 			acc.deposit(amount);
 		}
 	}
