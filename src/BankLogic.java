@@ -49,6 +49,9 @@ public class BankLogic {
 		System.out.println("Credit account added with number : " + accNumber);
 	}
 	
+	protected static void showAccounts(Customer c) {
+		c.showAccounts();
+	}
 	protected static void withdraw(Customer c) {
 		System.out.print("Enter account number : ");
 		if(userInput.hasNextLine()) {
@@ -100,7 +103,7 @@ public class BankLogic {
 				showCommandMenu();
 				System.out.print("Your choice : ");
 				try {
-				choice = userInput.nextInt();
+					choice = userInput.nextInt();
 				} catch (InputMismatchException e) {
 					userInput.nextLine();
 					System.out.println("Invalid choice, enter an integer (0-5).");
@@ -108,24 +111,24 @@ public class BankLogic {
 				}
 				System.out.println();
 				switch(choice) {
-				case 1:
-					createSavingAccount(customer);
-					break;
-				case 2:
-					createCreditAccount(customer);
-					break;
-				case 3: 
-					customer.showAccounts();
-					break;
-				case 4:
-					deposit(customer);
-					break;
-				case 5: 
-					withdraw(customer);
-					break;
-				case 0: 
-				default:
-					return;
+					case 1:
+						createSavingAccount(customer);
+						break;
+					case 2:
+						createCreditAccount(customer);
+						break;
+					case 3: 
+						showAccounts(customer);
+						break;
+					case 4:
+						deposit(customer);
+						break;
+					case 5: 
+						withdraw(customer);
+						break;
+					case 0: 
+					default:
+						return;
 				}
 			}
 		}
