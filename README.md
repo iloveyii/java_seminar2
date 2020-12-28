@@ -3,7 +3,7 @@
 - The goal of this seminar is that the student:
 - Develops knowledge and skills within object-oriented concepts
 - Develops an application with an object-oriented approach
-
+![screenshot]()
 ## Introduction
 - In this seminar you shall implement a java console application, to be used in a bank, to
 manage the customers and their bank accounts. The bank has some customers, and each
